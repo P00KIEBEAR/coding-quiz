@@ -1,4 +1,29 @@
-* .question {
+* begin,
+
+
+
+.startBtn {
+  background-color: gray;
+  padding: 2%;
+  border-width: 4%;
+  width: 12%;
+  display: block;
+  border-radius: 25%;
+
+}
+
+.startPage h1,
+p {
+  text-align: center;
+}
+
+.startPage {
+  position: relative;
+  margin: 20px;
+
+}
+
+.question {
   background-color: antiquewhite;
   font-size: 36px;
 }
