@@ -30,24 +30,33 @@ function showQuestion() {
   //Question
   var questionPage = document.createElement("ul");
   questionPage.className = "question";
-  questionPage.textContent = questions[currentQuestion].question;
+  questionPage.innerText = questions[currentQuestion].question;
 
   //Answers
   var answerA = document.createElement("li");
-  answerA.textContent = questions[currentQuestion].question[0];
-  //var answerABtn = document.createElement("button");
-  //answerABtn.id = "AButton";
-  //answerABtn.innerHTML = questions[currentQuestion].answers[0];
-
+  var aBtn = document.createElement("button");
+  aBtn.id = "aButton";
+  aBtn.innerText = questions[currentQuestion].answers[0];
+  answerA.appendChild(aBtn);
 
   var answerB = document.createElement("li");
-  answerB.textContent = questions[currentQuestion].answers[1];
+  var bBtn = document.createElement("button");
+  bBtn.id = "bButton";
+  bBtn.textContent = questions[currentQuestion].answers[1];
+  answerB.appendChild(bBtn);
 
   var answerC = document.createElement("li");
-  answerC.textContent = questions[currentQuestion].answers[2];
+  var cBtn = document.createElement("button");
+  cBtn.id = "cButton"
+  cBtn.textContent = questions[currentQuestion].answers[2];
+  answerC.appendChild(cBtn);
 
   var answerD = document.createElement("li");
-  answerD.textContent = questions[currentQuestion].answers[3];
+  var dBtn = document.createElement("button");
+  dBtn.id = "dButton"
+  dBtn.textContent = questions[currentQuestion].answers[3];
+  answerD.appendChild(dBtn);
+
 
 
 
