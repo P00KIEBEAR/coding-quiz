@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Quiz</title>
-    <link rel="stylesheet" href="assets/style.css" >
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-  <div class="startPage">
+  <header>
+    <ul>
+      <il><button class="highScoreBtn" id="highScore">High Score</button></il>
+
+      <il id="time" class="seconds">60</il>
+      <il id="wordTimer" class="time">Timer</il>
+    </ul>
+  </header>
+  <main>
     <h1>Coding Quiz Challenge</h1>
     <p>
       Try to answer the following code-related question within the time limit. <br />
       Keep in mind that incorrect answers will penalize your score/time by 10 seconds!!
 
     </p>
-  <button class="startBtn" id="Begin" >Start Quiz</button>
-  </div>
-  <script src="assets/script.js"></script> 
+    <button class="startBtn" id="begin">Start Quiz</button>
+    <div id="pageOne" class="startPage">
+
+    </div>
+  </main>
+  <script src="assets/script.js"></script>
 </body>
+
 </html>

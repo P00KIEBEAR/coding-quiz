@@ -1,6 +1,21 @@
 * begin,
 
+main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.time {
+  float: right;
+  margin-right: 5px;
+}
+
+.seconds {
+  float: right;
+  margin-right: 5%;
+}
 
 .startBtn {
   background-color: gray;
