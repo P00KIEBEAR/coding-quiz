@@ -1,6 +1,6 @@
 "use strict";
 var questions = [{
-  question: "a",
+  question: "Question",
   answers: ["a", "b", "c", "d"],
   correct: "a"
 }];
@@ -27,18 +27,39 @@ var beginQuiz = function () {
 
 function showQuestion() {
 
-
+  //Question
   var questionPage = document.createElement("ul");
   questionPage.className = "question";
   questionPage.textContent = questions[currentQuestion].question;
-  var quizPage1 = document.createElement("div");
-  quizPage1.className = "quizPageOne";
-  quizPage1.idName = "quizPage";
-  quizPage1.innerHTML = "<h3 > </h3>";
+
+  //Answers
+  var answerA = document.createElement("li");
+  answerA.textContent = questions[currentQuestion].question[0];
+  //var answerABtn = document.createElement("button");
+  //answerABtn.id = "AButton";
+  //answerABtn.innerHTML = questions[currentQuestion].answers[0];
+
+
+  var answerB = document.createElement("li");
+  answerB.textContent = questions[currentQuestion].answers[1];
+
+  var answerC = document.createElement("li");
+  answerC.textContent = questions[currentQuestion].answers[2];
+
+  var answerD = document.createElement("li");
+  answerD.textContent = questions[currentQuestion].answers[3];
+
+
+
+
+
   quiz.appendChild(questionPage)
 
-  quiz.appendChild(quizPage1);
-  var wrongAnswerOptions = "<li>" + wrongAnswer.join("</li><li>") + "</li>";
+  quiz.appendChild(answerA);
+  quiz.appendChild(answerB);
+  quiz.appendChild(answerC);
+  quiz.appendChild(answerD);
+
 
   /* click event
   check answer fucntion
