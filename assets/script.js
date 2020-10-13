@@ -3,14 +3,43 @@ var questions = [{
   question: "Question",
   answers: ["a", "b", "c", "d"],
   correct: "a"
+},
+{
+  question: "What does HTLM stand for?",
+  answers: ["Hyper Text Markup Language ", "Hyper Text Link Markerup", "Some computer lanquage", "Hotel Californa"],
+  correct: "a"
+}, {
+  question: "What does DOM stand for?",
+  answers: ["a", "b ", "c", "d"],
+  correct: "b"
+}, {
+  question: "Question",
+  answers: ["a", "b", "c", "d"],
+  correct: "d"
+},
+{
+  question: "Question",
+  answers: ["a", "b", "c", "d"],
+  correct: "a"
 }];
-
 
 var startQuiz = document.querySelector("#begin");
 var highScore = document.querySelector("#scores");
 var quiz = document.querySelector("main");
 var timeEl = document.querySelector("#time")
+var aBtn = document.createElement("button");
+aBtn.id = "aButton";
+var bBtn = document.createElement("button");
+bBtn.id = "bButton";
+var cBtn = document.createElement("button");
+cBtn.id = "cButton";
+var dBtn = document.createElement("button");
+dBtn.id = "dButton";
 
+var buttonA = document.querySelector("#aButton");
+var buttonB = document.querySelector("#bButton");
+var buttonC = document.querySelector("#cButton");
+var buttonD = document.querySelector("#dButton");
 
 var currentQuestion = 0;
 var score = 0;
@@ -26,7 +55,51 @@ var beginQuiz = function () {
 
 
 function showQuestion() {
+  currentQuestion = currentQuestion
+  //Question
+  var questionPage = document.createElement("ul");
+  questionPage.className = "question";
+  questionPage.innerText = questions[currentQuestion].question;
 
+  //Answers
+  var answerA = document.createElement("li");
+
+  aBtn.innerText = questions[currentQuestion].answers[0];
+  answerA.appendChild(aBtn);
+
+  var answerB = document.createElement("li");
+
+  bBtn.textContent = questions[currentQuestion].answers[1];
+  answerB.appendChild(bBtn);
+
+  var answerC = document.createElement("li");
+
+  cBtn.textContent = questions[currentQuestion].answers[2];
+  answerC.appendChild(cBtn);
+
+  var answerD = document.createElement("li");
+
+  dBtn.textContent = questions[currentQuestion].answers[3];
+  answerD.appendChild(dBtn);
+
+
+  quiz.appendChild(questionPage)
+  quiz.appendChild(answerA);
+  quiz.appendChild(answerB);
+  quiz.appendChild(answerC);
+  quiz.appendChild(answerD);
+
+  buttonA.addEventListener("click", showNextQuestion);
+  buttonB.addEventListener("click", showNextQuestion);
+  buttonC.addEventListener("click", showNextQuestion);
+  buttonD.addEventListener("click", showNextQuestion);
+
+}
+/* click event
+check answer fucntion
+*/
+var showNextQuestion = function () {
+  currentQuestion = currentQuestion + 1
   //Question
   var questionPage = document.createElement("ul");
   questionPage.className = "question";
@@ -40,42 +113,35 @@ function showQuestion() {
   answerA.appendChild(aBtn);
 
   var answerB = document.createElement("li");
-  var bBtn = document.createElement("button");
-  bBtn.id = "bButton";
+
   bBtn.textContent = questions[currentQuestion].answers[1];
   answerB.appendChild(bBtn);
 
   var answerC = document.createElement("li");
-  var cBtn = document.createElement("button");
-  cBtn.id = "cButton"
+
   cBtn.textContent = questions[currentQuestion].answers[2];
   answerC.appendChild(cBtn);
 
   var answerD = document.createElement("li");
-  var dBtn = document.createElement("button");
-  dBtn.id = "dButton"
+
   dBtn.textContent = questions[currentQuestion].answers[3];
   answerD.appendChild(dBtn);
 
 
-
-
-
-
   quiz.appendChild(questionPage)
-
   quiz.appendChild(answerA);
   quiz.appendChild(answerB);
   quiz.appendChild(answerC);
   quiz.appendChild(answerD);
 
+  buttonA.addEventListener("click", showNextQuestion);
+  buttonB.addEventListener("click", showNextQuestion);
+  buttonC.addEventListener("click", showNextQuestion);
+  buttonD.addEventListener("click", showNextQuestion);
 
-  /* click event
-  check answer fucntion
-  
-  /* 
-   questions ...add ul.
-     li..for each questions */
+  /*
+  questions ...add ul.
+    li..for each questions */
   //answer code (questions[0].answers[2])
 
 
@@ -87,9 +153,11 @@ function showQuestion() {
 
 startQuiz.addEventListener("click", beginQuiz);
 
-// add timer
+
+
+// add timer TIMER goes into -
 function stopWatch() {
-  // If the count down is finished, write some text
+  // If the count down is finished, write some text 
   var timeInterval = setInterval(function () {
     timer--;
     timeEl.textContent = timer;
