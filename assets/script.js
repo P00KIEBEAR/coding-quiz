@@ -37,6 +37,7 @@ function showQuestion() {
   //Answers
   var answerA = document.createElement("li");
   aBtn.innerText = questions[currentQuestion].answers[0];
+  aBtn.value = questions[currentQuestion].answers[0];
   answerA.appendChild(aBtn);
 
   var answerB = document.createElement("li");
@@ -58,25 +59,40 @@ function showQuestion() {
   quiz.appendChild(answerC);
   quiz.appendChild(answerD);
 
-  var buttonA = document.getElementById("aBtn");
-  var buttonB = document.getElementById("bBtn");
-  var buttonC = document.getElementById("cBtn");
-  var buttonD = document.getElementById("dBtn");
 
-  aBtn.addEventListener("click", showNextQuestion, aBtn);
-  bBtn.addEventListener("click", showNextQuestion, bBtn);
-  cBtn.addEventListener("click", showNextQuestion, cBtn);
-  dBtn.addEventListener("click", showNextQuestion, dBtn);
+
+  aBtn.addEventListener("click", checkAnswer,);
+  bBtn.addEventListener("click", checkAnswer,);
+  cBtn.addEventListener("click", checkAnswer,);
+  dBtn.addEventListener("click", checkAnswer,);
 
 
 
 }
 /* click event
-check answer fucntion
-*/
-var showNextQuestion = function () {
-  quiz.innerHTML = "";
+check answer fucntion*/
+var checkAnswer = function () {
 
+  if (questions[currentQuestion].correct === this.innerText) {
+    score = (score + 1);
+    showNextQuestion();
+  }
+  else {
+    timer = (timer - 10);
+    showNextQuestion();
+  }
+}
+var endGame = function () {
+  /*
+  Create end page and start over button
+  create input field for high score 
+  */
+}
+
+
+var showNextQuestion = function () {
+
+  quiz.innerHTML = "";
   currentQuestion = currentQuestion + 1
   //Question
   var questionPage = document.createElement("ul");
@@ -112,10 +128,10 @@ var showNextQuestion = function () {
 
 
 
-  aBtn.addEventListener("click", showNextQuestion, aBtn);
-  bBtn.addEventListener("click", showNextQuestion, bBtn);
-  cBtn.addEventListener("click", showNextQuestion, cBtn);
-  dBtn.addEventListener("click", showNextQuestion, dBtn);
+  aBtn.addEventListener("click", checkAnswer,);
+  bBtn.addEventListener("click", checkAnswer,);
+  cBtn.addEventListener("click", checkAnswer,);
+  dBtn.addEventListener("click", checkAnswer,);
 
   /*
   questions ...add ul.
