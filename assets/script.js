@@ -36,10 +36,10 @@ cBtn.id = "cButton";
 var dBtn = document.createElement("button");
 dBtn.id = "dButton";
 
-var buttonA = document.querySelector("#aButton");
-var buttonB = document.querySelector("#bButton");
-var buttonC = document.querySelector("#cButton");
-var buttonD = document.querySelector("#dButton");
+var buttonA = document.getElementById("aButton");
+var buttonB = document.getElementById("bButton");
+var buttonC = document.getElementById("cButton");
+var buttonD = document.getElementById("dButton");
 
 var currentQuestion = 0;
 var score = 0;
@@ -63,22 +63,18 @@ function showQuestion() {
 
   //Answers
   var answerA = document.createElement("li");
-
   aBtn.innerText = questions[currentQuestion].answers[0];
   answerA.appendChild(aBtn);
 
   var answerB = document.createElement("li");
-
   bBtn.textContent = questions[currentQuestion].answers[1];
   answerB.appendChild(bBtn);
 
   var answerC = document.createElement("li");
-
   cBtn.textContent = questions[currentQuestion].answers[2];
   answerC.appendChild(cBtn);
 
   var answerD = document.createElement("li");
-
   dBtn.textContent = questions[currentQuestion].answers[3];
   answerD.appendChild(dBtn);
 
@@ -133,6 +129,8 @@ var showNextQuestion = function () {
   quiz.appendChild(answerB);
   quiz.appendChild(answerC);
   quiz.appendChild(answerD);
+
+
 
   buttonA.addEventListener("click", showNextQuestion);
   buttonB.addEventListener("click", showNextQuestion);
