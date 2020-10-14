@@ -83,6 +83,19 @@ var checkAnswer = function () {
   }
 }
 var endGame = function () {
+
+  quiz.innerHTML = "";
+  var endPage = document.createElement("h1");
+  endPage.innerText = "Thank you for taking the quiz";
+  var yourScore = document.createElement("h2");
+  yourScore.innerText = "Your is" + " " + score + "!";
+  var highScoreBtn = document.createElement("button");
+  highScoreBtn.type = ("submit")
+
+  quiz.appendChild(endPage);
+  quiz.appendChild(yourScore);
+  quiz.appendChild(highScoreBtn);
+
   /*
   Create end page and start over button
   create input field for high score 
@@ -137,8 +150,6 @@ var showNextQuestion = function () {
   questions ...add ul.
     li..for each questions */
   //answer code (questions[0].answers[2])
-
-
 }
 
 
@@ -157,7 +168,7 @@ function stopWatch() {
     timeEl.textContent = timer;
     if (timer <= 0) {
       clearInterval(timerInterval);
-      endgame();
+      endGame();
 
     }
   }, 1000);
