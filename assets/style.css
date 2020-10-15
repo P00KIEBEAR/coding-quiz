@@ -17,6 +17,12 @@ main {
   margin-right: 5%;
 }
 
+.highScore {
+
+  cursor: pointer;
+
+}
+
 .startBtn {
   background-color: gray;
   padding: 2%;
