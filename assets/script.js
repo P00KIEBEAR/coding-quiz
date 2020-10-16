@@ -33,8 +33,6 @@ else {
 /*
 need to use localStorage  and start over button
 */
-
-
 var playersInitials = localStorage.getItem("initials");
 var currentScore = localStorage.getItem("score");
 if (playersInitials && currentScore) {
@@ -77,56 +75,57 @@ var beginQuiz = function () {
   showQuestion();
 }
 
-
 function showQuestion() {
-  currentQuestion = currentQuestion
-  //Question
-  var questionPage = document.createElement("ul");
-  questionPage.className = "question";
-  questionPage.innerText = questions[currentQuestion].question;
+  if (currentQuestion < questions.length) {
+    //Question
+    var questionPage = document.createElement("ul");
+    questionPage.className = "question";
+    questionPage.innerText = questions[currentQuestion].question;
 
-  //Answers
-  var answerA = document.createElement("li");
-  aBtn.innerText = questions[currentQuestion].answers[0];
-  aBtn.value = questions[currentQuestion].answers[0];
-  answerA.appendChild(aBtn);
+    //Answers
+    var answerA = document.createElement("li");
+    aBtn.innerText = questions[currentQuestion].answers[0];
+    aBtn.value = questions[currentQuestion].answers[0];
+    answerA.appendChild(aBtn);
 
-  var answerB = document.createElement("li");
-  bBtn.textContent = questions[currentQuestion].answers[1];
-  answerB.appendChild(bBtn);
+    var answerB = document.createElement("li");
+    bBtn.textContent = questions[currentQuestion].answers[1];
+    answerB.appendChild(bBtn);
 
-  var answerC = document.createElement("li");
-  cBtn.textContent = questions[currentQuestion].answers[2];
-  answerC.appendChild(cBtn);
+    var answerC = document.createElement("li");
+    cBtn.textContent = questions[currentQuestion].answers[2];
+    answerC.appendChild(cBtn);
 
-  var answerD = document.createElement("li");
-  dBtn.textContent = questions[currentQuestion].answers[3];
-  answerD.appendChild(dBtn);
+    var answerD = document.createElement("li");
+    dBtn.textContent = questions[currentQuestion].answers[3];
+    answerD.appendChild(dBtn);
 
-
-  quiz.appendChild(questionPage)
-  quiz.appendChild(answerA);
-  quiz.appendChild(answerB);
-  quiz.appendChild(answerC);
-  quiz.appendChild(answerD);
-
+    quiz.appendChild(questionPage)
+    quiz.appendChild(answerA);
+    quiz.appendChild(answerB);
+    quiz.appendChild(answerC);
+    quiz.appendChild(answerD);
 
 
-  aBtn.addEventListener("click", checkAnswer);
-  bBtn.addEventListener("click", checkAnswer);
-  cBtn.addEventListener("click", checkAnswer);
-  dBtn.addEventListener("click", checkAnswer);
+    aBtn.addEventListener("click", checkAnswer);
+    bBtn.addEventListener("click", checkAnswer);
+    cBtn.addEventListener("click", checkAnswer);
+    dBtn.addEventListener("click", checkAnswer);
 
-
-
+  }
+  else {
+    endGame()
+  }
+  debugger;
 }
 /* click event
 check answer fucntion*/
 var checkAnswer = function () {
-
+  quiz.innerHTML = "";
+  currentQuestion = currentQuestion + 1
   if (questions[currentQuestion].correct === this.innerText) {
     score = (score + 1);
-    showNextQuestion();
+    showQuestion();
   }
   else {
     timer = (timer - 10);
@@ -143,7 +142,6 @@ var endGame = function () {
   var initialsInput = document.createElement("input");
   initialsInput.id = "initials"
   var form = document.createElement("form");
-
 
 
   // use local storage
@@ -163,73 +161,11 @@ var endGame = function () {
     localStorage.setItem("score", score)
     localStorage.setItem("initials", initials)
     location.reload();
-
   })
 }
-
-
-
-var showNextQuestion = function () {
-
-  quiz.innerHTML = "";
-  currentQuestion = currentQuestion + 1
-  //Question
-  if (currentQuestion < questions.length) {
-    var questionPage = document.createElement("ul");
-    questionPage.className = "question";
-    questionPage.innerText = questions[currentQuestion].question;
-
-    //Answers
-    var answerA = document.createElement("li");
-    var aBtn = document.createElement("button");
-    aBtn.id = "aButton";
-    aBtn.innerText = questions[currentQuestion].answers[0];
-    answerA.appendChild(aBtn);
-
-    var answerB = document.createElement("li");
-    bBtn.textContent = questions[currentQuestion].answers[1];
-    answerB.appendChild(bBtn);
-
-    var answerC = document.createElement("li");
-    cBtn.textContent = questions[currentQuestion].answers[2];
-    answerC.appendChild(cBtn);
-
-    var answerD = document.createElement("li");
-    dBtn.textContent = questions[currentQuestion].answers[3];
-    answerD.appendChild(dBtn);
-
-
-    quiz.appendChild(questionPage)
-    quiz.appendChild(answerA);
-    quiz.appendChild(answerB);
-    quiz.appendChild(answerC);
-    quiz.appendChild(answerD);
-
-
-
-
-    aBtn.addEventListener("click", checkAnswer);
-    bBtn.addEventListener("click", checkAnswer);
-    cBtn.addEventListener("click", checkAnswer);
-    dBtn.addEventListener("click", checkAnswer);
-  }
-  else {
-    endGame()
-  }
-
-  /*
-  questions ...add ul.
-    li..for each questions */
-  //answer code (questions[0].answers[2])
-}
-
-
-
 // THis will start quiz
 
 startQuiz.addEventListener("click", beginQuiz);
-
-
 
 // add timer TIMER goes into -
 function stopWatch() {
@@ -288,5 +224,4 @@ var questions = [{
   question: "What would be the largest font?",
   answers: ["h2", "a", "p", "h6"],
   correct: "h2"
-}]
-  ;
+}];

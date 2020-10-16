@@ -19,6 +19,8 @@ main {
 
 #highScoreList {
   display: none;
+  color: red;
+
 }
 
 .startBtn {
@@ -43,12 +45,12 @@ p {
 }
 
 .question {
-  background-color: antiquewhite;
+  text-shadow: black;
   font-size: 36px;
 }
 
 .anwswer {
-  background-color: ghostwhite;
+
   font-size: 24px;
 }
 
