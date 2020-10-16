@@ -122,14 +122,16 @@ function showQuestion() {
 check answer fucntion*/
 var checkAnswer = function () {
   quiz.innerHTML = "";
-  currentQuestion = currentQuestion + 1
+
   if (questions[currentQuestion].correct === this.innerText) {
     score = (score + 1);
+    currentQuestion = currentQuestion + 1
     showQuestion();
   }
   else {
     timer = (timer - 10);
-    showNextQuestion();
+    currentQuestion = currentQuestion + 1
+    showQuestion();
   }
 }
 var endGame = function () {
