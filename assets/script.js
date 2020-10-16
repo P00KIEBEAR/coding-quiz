@@ -19,15 +19,42 @@ highScoreBtn.id = "high"
 highScoreBtn.innerText = "Submit your initials."
 var highScoreBtnHide = document.querySelector("#highScore")
 
+var player1 = localStorage.getItem("player1");
+var scoreList = localStorage.getItem("scoreList");
+
+if (player1 && scoreList) {
+  player1 = JSON.parse(player1);
+  scoreList = JSON.parse(scoreList);
+}
+else {
+  player1 = ["pp"];
+  scoreList = ["4"];
+}
+/*
+need to use localStorage  and start over button
+*/
+
 
 var playersInitials = localStorage.getItem("initials");
 var currentScore = localStorage.getItem("score");
 if (playersInitials && currentScore) {
-  var currentPlayer = document.createElement("li");
-  currentPlayer.innerText = playersInitials + " " + currentScore;
-  highScore.appendChild(currentPlayer);
 
+  player1.push(playersInitials);
+  scoreList.push(currentScore);
+  var player3 = JSON.stringify(player1);
+  var score3 = JSON.stringify(scoreList);
+  localStorage.setItem("scoreList", score3);
+  localStorage.setItem("player1", player3);
+
+  for (var i = 0; i < player1.length; i++) {
+    var currentPlayer = document.createElement("li");
+    currentPlayer.innerText = player1[i] + " " + scoreList[i];
+    highScore.appendChild(currentPlayer);
+  }
 }
+
+//debugger;
+
 var currentQuestion = 0;
 var score = 0;
 var timer = 60
@@ -128,57 +155,18 @@ var endGame = function () {
 
 
   highScoreBtn.addEventListener("click", function (event) {
-    event.preventDefault();
+
     var initialL = document.querySelector("#initials")
     //console.log(initialL)
     var initials = initialL.value.trim();
     // console.log(initials);
     localStorage.setItem("score", score)
     localStorage.setItem("initials", initials)
-    addHighScore();
+    location.reload();
+
   })
 }
 
-
-/*
-need to use localStorage  and start over button
-*/
-
-var addHighScore = function () {
-  var InitialsL = localStorage.getItem("initials");
-  var currentScore = localStorage.getItem("score");
-
-  location.reload();
-
-}
-
-
-/*
-var playersScore = []
-playersScore = [{
-  id: 1,
-  player: initialsL,
-  finalScore: currentScore
-},
-{
-  id: 2,
-  name: "Add localStorage persistence",
-  player: initials,
-  finalScore: score
-}
-]
-// create new array to hold updated list of highscore
-var updatedplayersScoreArr = [];
-
-// loop through currentplayersScore
-for (var i = 0; i < playersScore.length; i++) {
-  ifplayersScore[i].id
-  //doesn't match the value of playersScoreId, let's keep that playersScore and push it into the new array
-  if (playersScores[i].id !== parseInt(playersScoreId)) {
-    updatedplayersScoreArr.push(playersScores[i]);
-  }
-}
-*/
 
 
 var showNextQuestion = function () {
