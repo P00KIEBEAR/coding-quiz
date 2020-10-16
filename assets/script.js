@@ -1,7 +1,7 @@
 "use strict";
 
 var startQuiz = document.querySelector("#begin");
-var highScore = document.querySelector("#dropdown");
+var highScore = document.querySelector("#highScoreList");
 //var playersScore = localStorage.setItem(playersScore)
 var quiz = document.querySelector("main");
 var timeEl = document.querySelector("#time")
@@ -17,13 +17,31 @@ var highScoreBtn = document.createElement("button");
 highScoreBtn.type = ("submit")
 highScoreBtn.id = "high"
 highScoreBtn.innerText = "Submit your initials."
+var highScoreBtnHide = document.querySelector("#highScore")
 
+
+var playersInitials = localStorage.getItem("initials");
+var currentScore = localStorage.getItem("score");
+if (playersInitials && currentScore) {
+  var currentPlayer = document.createElement("li");
+  currentPlayer.innerText = playersInitials + " " + currentScore;
+  highScore.appendChild(currentPlayer);
+
+}
 var currentQuestion = 0;
 var score = 0;
 var timer = 60
 
+function hide() {
+  var x = document.getElementById("highScoreList");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
-
+highScoreBtnHide.addEventListener("click", hide)
 var beginQuiz = function () {
   // remove start btn.
   score = 0;
@@ -67,10 +85,10 @@ function showQuestion() {
 
 
 
-  aBtn.addEventListener("click", checkAnswer,);
-  bBtn.addEventListener("click", checkAnswer,);
-  cBtn.addEventListener("click", checkAnswer,);
-  dBtn.addEventListener("click", checkAnswer,);
+  aBtn.addEventListener("click", checkAnswer);
+  bBtn.addEventListener("click", checkAnswer);
+  cBtn.addEventListener("click", checkAnswer);
+  dBtn.addEventListener("click", checkAnswer);
 
 
 
@@ -112,34 +130,35 @@ var endGame = function () {
   highScoreBtn.addEventListener("click", function (event) {
     event.preventDefault();
     var initialL = document.querySelector("#initials")
-    console.log(initialL)
+    //console.log(initialL)
     var initials = initialL.value.trim();
-    console.log(initials);
+    // console.log(initials);
     localStorage.setItem("score", score)
     localStorage.setItem("initials", initials)
     addHighScore();
   })
-  /*
-  need to use localStorage  and start over button
+}
+
+
+/*
+need to use localStorage  and start over button
 */
 
-
-}
 var addHighScore = function () {
+  var InitialsL = localStorage.getItem("initials");
+  var currentScore = localStorage.getItem("score");
 
+  location.reload();
 
-  var newPerson = document.createElement("li");
-  newPerson.innerText = "i did it";
-
-  highScore.appendChild(newPerson)
 }
+
+
 /*
 var playersScore = []
 playersScore = [{
   id: 1,
-  name: "Add localStorage persistence",
-  player: initials,
-  finalScore: score
+  player: initialsL,
+  finalScore: currentScore
 },
 {
   id: 2,
@@ -201,10 +220,10 @@ var showNextQuestion = function () {
 
 
 
-    aBtn.addEventListener("click", checkAnswer,);
-    bBtn.addEventListener("click", checkAnswer,);
-    cBtn.addEventListener("click", checkAnswer,);
-    dBtn.addEventListener("click", checkAnswer,);
+    aBtn.addEventListener("click", checkAnswer);
+    bBtn.addEventListener("click", checkAnswer);
+    cBtn.addEventListener("click", checkAnswer);
+    dBtn.addEventListener("click", checkAnswer);
   }
   else {
     endGame()
