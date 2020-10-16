@@ -51,7 +51,6 @@ if (playersInitials && currentScore) {
   }
 }
 
-//debugger;
 
 var currentQuestion = 0;
 var score = 0;
@@ -116,7 +115,7 @@ function showQuestion() {
   else {
     endGame()
   }
-  debugger;
+
 }
 /* click event
 check answer fucntion*/
