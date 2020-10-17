@@ -22,6 +22,7 @@ var highScoreBtnHide = document.querySelector("#highScore")
 var player1 = localStorage.getItem("player1");
 var scoreList = localStorage.getItem("scoreList");
 var playerScore = []
+
 if (player1 && scoreList) {
   player1 = JSON.parse(player1);
   scoreList = JSON.parse(scoreList);
@@ -48,16 +49,16 @@ if (playersInitials && currentScore) {
   for (var x = 0; x < player1.length; x++) {
     playerScore.push({ id: x, player: player1[x], score: scoreList[x] })
   }
-  /*
-  time to sort but high score
-playerScore.sort((a, b) => {
-    return a.age - b.age;
-});
-  */
 
-  for (var i = 0; i < player1.length; i++) {
+  //time to sort but high score
+  playerScore.sort((a, b) => {
+    return a.score - b.score;
+  });
+
+
+  for (var i = playerScore.length - 1; i >= 0; i--) {
     var currentPlayer = document.createElement("li");
-    currentPlayer.innerText = player1[i] + " " + scoreList[i];
+    currentPlayer.innerText = playerScore[i].player + playerScore[i].score;
     highScore.appendChild(currentPlayer);
   }
 }
