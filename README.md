@@ -3,29 +3,25 @@ https://github.com/P00KIEBEAR
 
 https://p00kiebear.github.io/coding-quiz/
 
-## Table of contents
+**Table of contents**
+**About the Project**
+**built with**
+**Getting Start**
+**Acknowledements**
 
 ## About the Project
-
-## built with
-
-## Getting Start
-
-## Acknowledements
-
-**About the Project**
 
 ~~~
  AS A coding boot camp student
  I WANT to take a timed quiz on JavaScript  fundamentals that stores high scores
  SO THAT I can gauge my progress compared to my peers
 ~~~
-**Build With**
+## Build With
 * HTML
 * CSS
 * javascript
 
-**Gettting Started**
+## Gettting Started
 ~~~
 GIVEN I am taking a code quiz
 WHEN I click the start button
@@ -39,7 +35,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ~~~
-**Acknowlledements**
+
+## Acknowlledements
 - Jason Whitted (instuctor)
 - Tutor Amanda Crawford
 - Geekforgeeks.org

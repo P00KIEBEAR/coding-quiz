@@ -21,14 +21,14 @@ var highScoreBtnHide = document.querySelector("#highScore")
 
 var player1 = localStorage.getItem("player1");
 var scoreList = localStorage.getItem("scoreList");
-
+var playerScore = []
 if (player1 && scoreList) {
   player1 = JSON.parse(player1);
   scoreList = JSON.parse(scoreList);
 }
 else {
-  player1 = ["pp"];
-  scoreList = ["4"];
+  player1 = [];
+  scoreList = [];
 }
 /*
 need to use localStorage  and start over button
@@ -43,6 +43,17 @@ if (playersInitials && currentScore) {
   var score3 = JSON.stringify(scoreList);
   localStorage.setItem("scoreList", score3);
   localStorage.setItem("player1", player3);
+
+  scoreList = scoreList.map(Number);
+  for (var x = 0; x < player1.length; x++) {
+    playerScore.push({ id: x, player: player1[x], score: scoreList[x] })
+  }
+  /*
+  time to sort but high score
+playerScore.sort((a, b) => {
+    return a.age - b.age;
+});
+  */
 
   for (var i = 0; i < player1.length; i++) {
     var currentPlayer = document.createElement("li");
@@ -113,6 +124,7 @@ function showQuestion() {
 
   }
   else {
+    timer = 0;
     endGame()
   }
 
