@@ -29,11 +29,15 @@ main {
   border-width: 4%;
   width: 12%;
   display: block;
-  border-radius: 25%;
+  border-radius: 50%;
 
 }
 
-h1,
+main li {
+  border-radius: 12%;
+  margin-bottom: 20px;
+}
+
 p {
   text-align: center;
 }
@@ -58,4 +62,28 @@ p {
   position: relative;
   margin: 20px;
 
+}
+
+#wrong {
+  font-size: 24px;
+  font-style: italic;
+  color: #4b0101;
+  text-align: center;
+}
+
+
+@media: screen max width 900px;
+
+main u,
+p {
+  font-size: large;
+
+}
+
+main li {
+  font-size: medium;
+}
+
+.startBtn {
+  width: 25%;
 }

@@ -1,5 +1,6 @@
 "use strict";
 
+var wrong = document.querySelector("#wrong")
 var startQuiz = document.querySelector("#begin");
 var highScore = document.querySelector("#highScoreList");
 //var playersScore = localStorage.setItem(playersScore)
@@ -23,6 +24,9 @@ var player1 = localStorage.getItem("player1");
 var scoreList = localStorage.getItem("scoreList");
 var playerScore = []
 
+
+
+
 if (player1 && scoreList) {
   player1 = JSON.parse(player1);
   scoreList = JSON.parse(scoreList);
@@ -37,11 +41,13 @@ need to use localStorage  and start over button
 var playersInitials = localStorage.getItem("initials");
 var currentScore = localStorage.getItem("score");
 if (playersInitials && currentScore) {
-
+  localStorage.setItem("score", "")
+  localStorage.setItem("initials", "")
   player1.push(playersInitials);
   scoreList.push(currentScore);
   var player3 = JSON.stringify(player1);
   var score3 = JSON.stringify(scoreList);
+
   localStorage.setItem("scoreList", score3);
   localStorage.setItem("player1", player3);
 
@@ -54,14 +60,14 @@ if (playersInitials && currentScore) {
   playerScore.sort((a, b) => {
     return a.score - b.score;
   });
-
-
-  for (var i = playerScore.length - 1; i >= 0; i--) {
-    var currentPlayer = document.createElement("li");
-    currentPlayer.innerText = playerScore[i].player + playerScore[i].score;
-    highScore.appendChild(currentPlayer);
-  }
 }
+
+for (var i = playerScore.length - 1; i >= 0; i--) {
+  var currentPlayer = document.createElement("li");
+  currentPlayer.innerText = playerScore[i].player + playerScore[i].score;
+  highScore.appendChild(currentPlayer);
+}
+
 
 
 var currentQuestion = 0;
@@ -87,8 +93,10 @@ var beginQuiz = function () {
 }
 
 function showQuestion() {
+
   if (currentQuestion < questions.length) {
     //Question
+
     var questionPage = document.createElement("ul");
     questionPage.className = "question";
     questionPage.innerText = questions[currentQuestion].question;
@@ -137,7 +145,7 @@ var checkAnswer = function () {
 
   if (questions[currentQuestion].correct === this.innerText) {
     score = (score + 1);
-    currentQuestion = currentQuestion + 1
+    currentQuestion = currentQuestion + 1;
     showQuestion();
   }
   else {
@@ -147,8 +155,9 @@ var checkAnswer = function () {
   }
 }
 var endGame = function () {
-
+  timer = 0
   quiz.innerHTML = "";
+
   var endPage = document.createElement("h1");
   endPage.innerText = "Thank you for taking the quiz";
   var yourScore = document.createElement("h2");
@@ -220,22 +229,22 @@ var questions = [{
 },
 {
   //more questions
-  question: "What would be the largest font?",
-  answers: ["h2", "a", "p", "h6"],
-  correct: "h2"
+  question: "What is not JavaScript Data Types?",
+  answers: ["Number", "String", "Object", "Span"],
+  correct: "Span"
 },
 {
-  question: "What would be the largest font?",
-  answers: ["h2", "a", "p", "h6"],
-  correct: "h2"
+  question: "Which company developed JavaScript?",
+  answers: ["Netscape", "Google", "Apple", "Mac"],
+  correct: "Netscape"
 },
 {
-  question: "What would be the largest font?",
-  answers: ["h2", "a", "p", "h6"],
-  correct: "h2"
+  question: " What is not a looping structures in JavaScript?",
+  answers: ["for", "function", "do-while loop", "while"],
+  correct: "function"
 },
 {
-  question: "What would be the largest font?",
-  answers: ["h2", "a", "p", "h6"],
-  correct: "h2"
+  question: "What is not a types of Pop up boxes available in JavaScript?",
+  answers: ["Alert", "Confirm", "Prompt", "None of the above."],
+  correct: "None of the above."
 }];
