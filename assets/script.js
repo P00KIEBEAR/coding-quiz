@@ -1,6 +1,6 @@
 "use strict";
 
-var wrong = document.querySelector("#wrong")
+var wrong = document.querySelector("#wrong");
 var startQuiz = document.querySelector("#begin");
 var highScore = document.querySelector("#highScoreList");
 //var playersScore = localStorage.setItem(playersScore)
@@ -15,14 +15,14 @@ cBtn.value = cBtn.innerText;
 var dBtn = document.createElement("button");
 dBtn.value = dBtn.innerText;
 var highScoreBtn = document.createElement("button");
-highScoreBtn.type = ("submit")
-highScoreBtn.id = "high"
-highScoreBtn.innerText = "Submit your initials."
+highScoreBtn.type = ("submit");
+highScoreBtn.id = "high";
+highScoreBtn.innerText = "Submit your initials.";
 var highScoreBtnHide = document.querySelector("#highScore")
 
 var player1 = localStorage.getItem("player1");
 var scoreList = localStorage.getItem("scoreList");
-var playerScore = []
+var playerScore = [];
 
 
 
@@ -41,8 +41,8 @@ need to use localStorage  and start over button
 var playersInitials = localStorage.getItem("initials");
 var currentScore = localStorage.getItem("score");
 if (playersInitials && currentScore) {
-  localStorage.setItem("score", "")
-  localStorage.setItem("initials", "")
+  localStorage.setItem("score", "");
+  localStorage.setItem("initials", "");
   player1.push(playersInitials);
   scoreList.push(currentScore);
   var player3 = JSON.stringify(player1);
@@ -72,9 +72,9 @@ for (var i = playerScore.length - 1; i >= 0; i--) {
 
 var currentQuestion = 0;
 var score = 0;
-var timer = 60
+var timer = 60;
 
-function hide() {
+function highScoreToggle() {
   var x = document.getElementById("highScoreList");
   if (x.style.display === "none") {
     x.style.display = "block";
@@ -83,7 +83,7 @@ function hide() {
   }
 }
 
-highScoreBtnHide.addEventListener("click", hide)
+highScoreBtnHide.addEventListener("click", highScoreToggle);
 var beginQuiz = function () {
   // remove start btn.
   score = 0;
@@ -134,7 +134,7 @@ function showQuestion() {
   }
   else {
     timer = 0;
-    endGame()
+    endGame();
   }
 
 }
