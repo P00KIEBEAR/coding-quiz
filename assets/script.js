@@ -24,6 +24,9 @@ var player1 = localStorage.getItem("player1");
 var scoreList = localStorage.getItem("scoreList");
 var playerScore = [];
 
+var currentQuestion = 0;
+var score = 0;
+var timer = 60;
 
 
 
@@ -50,17 +53,17 @@ if (playersInitials && currentScore) {
 
   localStorage.setItem("scoreList", score3);
   localStorage.setItem("player1", player3);
-
-  scoreList = scoreList.map(Number);
-  for (var x = 0; x < player1.length; x++) {
-    playerScore.push({ id: x, player: player1[x], score: scoreList[x] })
-  }
-
-  //time to sort but high score
-  playerScore.sort((a, b) => {
-    return a.score - b.score;
-  });
 }
+scoreList = scoreList.map(Number);
+for (var x = 0; x < player1.length; x++) {
+  playerScore.push({ id: x, player: player1[x], score: scoreList[x] })
+}
+
+//time to sort but high score
+playerScore.sort((a, b) => {
+  return a.score - b.score;
+});
+
 
 for (var i = playerScore.length - 1; i >= 0; i--) {
   var currentPlayer = document.createElement("li");
@@ -70,9 +73,6 @@ for (var i = playerScore.length - 1; i >= 0; i--) {
 
 
 
-var currentQuestion = 0;
-var score = 0;
-var timer = 60;
 
 function highScoreToggle() {
   var x = document.getElementById("highScoreList");
@@ -84,6 +84,7 @@ function highScoreToggle() {
 }
 
 highScoreBtnHide.addEventListener("click", highScoreToggle);
+localStorage.getItem
 var beginQuiz = function () {
   // remove start btn.
   score = 0;
